@@ -43,14 +43,42 @@ void start_screen(int grid[4][4]){
     // cout<<choice;
     if(choice==1){
         
-        random_tile(grid);
-        random_tile(grid);
+        random_tile();
+        random_tile();
         print_grid(grid,4,4);
     }
     else{
         exit(0);
     }
 
+}
+void move_left(){
+    for(int i;i<4;i++){
+        for(int j=3;j>=0;j--){
+            if(grid[i][j]!=0){
+                int k=j-1;
+                while(k>=0){
+                    if(grid[i][k]==0){
+                        grid[i][k]=grid[i][k+1];
+                        grid[i][k+1]=0;
+                    }
+                    else{
+                        if(grid[i][k]==grid[i][k+1]){
+                            grid[i][k]=grid[i][k+1]*2;
+                            grid[i][k+1]=0;
+                        }
+                        else{
+                            break;
+                        }
+                    }
+                    k--;
+
+                }
+
+            }
+        }
+    }
+    
 }
 int gameplay(int grid[][4]){
     bool game=true;
@@ -64,16 +92,17 @@ int gameplay(int grid[][4]){
         int choice;
         cin>>choice;
         if(choice==1){
-            move_right(grid);
+            // move_right(grid);
         }
         else if(choice==2){
-            move_left(grid);
+            move_left();
         }
         else if(choice==3){
-            move_up(grid);
+            // move_up(grid);
         }
         else if(choice==4){
-            move_down(grid);
+            // move_down(grid);
+
         }
         else if(choice==5){
             game=false;
@@ -87,20 +116,11 @@ int gameplay(int grid[][4]){
         print_grid(grid,4,4);
     }
 }
-int move_right(){
-    for(int i=0;i<4;i++){
-        for(int j=0;j<4;i++){
-            if(grid[i][j]!=0){
-                grid[i][j-1]=grid[i][j];
-                grid[i][j]=0;
-            }
-        }
-    }
-}
+
 int main(){
     srand(time(nullptr));
     start_screen(grid);
-
+    gameplay(grid);
     // random_tile(grid);
     // print_grid(grid,4,4);
     
