@@ -57,7 +57,7 @@ void start_screen(int grid[4][4]){
 
 }
 void move_left(){
-    for(int i;i<4;i++){
+    for(int i=0;i<4;i++){
         for(int j=3;j>=0;j--){
             if(grid[i][j]!=0){
                 int k=j-1;
@@ -87,7 +87,7 @@ void move_left(){
 }
 
 void move_right(){
-    for(int i;i<4;i++){
+    for(int i=0;i<4;i++){
         for(int j=0;j<4;j++){
             if(grid[i][j]!=0){
                 int k=j+1;
@@ -117,7 +117,7 @@ void move_right(){
 }
 
 void move_up(){
-    for(int i;i<4;i++){
+    for(int i=0;i<4;i++){
         for(int j=3;j>=0;j--){
             if(grid[i][j]!=0){
                 int k=i-1;
@@ -130,7 +130,7 @@ void move_up(){
                         if(grid[k][j]==grid[k+1][j]){
                             grid[k][j]=grid[k+1][j]*2;
                             grid[k+1][j]=0;
-                            score+=grid[i][k];
+                            score += grid[k][j];
                         }
                         else{
                             break;
@@ -147,7 +147,7 @@ void move_up(){
 }
 
 void move_down(){
-    for(int i;i<4;i++){
+    for(int i=0;i<4;i++){
         for(int j=0;j<4;j++){
             if(grid[i][j]!=0){
                 int k=i+1;
@@ -160,7 +160,7 @@ void move_down(){
                         if(grid[k][j]==grid[k-1][j]){
                             grid[k][j]=grid[k-1][j]*2;
                             grid[k-1][j]=0;
-                            score+=grid[i][k];
+                            score += grid[k][j]; 
                         }
                         else{
                             break;
